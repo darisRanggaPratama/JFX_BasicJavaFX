@@ -2,6 +2,7 @@ package com.tama.jfxcrud.controller;
 
 import com.tama.jfxcrud.model.Customer;
 import com.tama.jfxcrud.util.DatabaseConnection;
+import com.tama.jfxcrud.util.JasperReportsUtil;
 import com.tama.jfxcrud.view.ConnectionSetupView;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -390,23 +391,44 @@ public class MainViewController implements Initializable {
             showNotConnectedAlert();
             return;
         }
-        
+
+        // Test JasperReports first
+        System.out.println("DEBUG: Testing JasperReports before CSV export...");
+        testJasperReports();
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save CSV File");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
         fileChooser.setInitialFileName("customers.csv");
         File file = fileChooser.showSaveDialog(primaryStage);
-        
+
         if (file != null) {
             try {
                 List<Customer> allCustomers = controller.getCustomers(totalRecords, 0, currentSearch);
                 Map<String, Integer> result = controller.exportCSV(file, allCustomers);
-                showAlert(Alert.AlertType.INFORMATION, "Export Result", "CSV Export Completed", 
-                        String.format("Successfully exported: %d records\nFailed to export: %d records", 
+                showAlert(Alert.AlertType.INFORMATION, "Export Result", "CSV Export Completed",
+                        String.format("Successfully exported: %d records\nFailed to export: %d records",
                                 result.get("success"), result.get("failed")));
             } catch (SQLException e) {
                 showAlert(Alert.AlertType.ERROR, "Database Error", "Failed to export data", e.getMessage());
             }
+        }
+    }
+
+    private void testJasperReports() {
+        try {
+            System.out.println("DEBUG: Testing JasperReports functionality...");
+            List<Customer> testCustomers = controller.getCustomers(5, 0, "");
+            System.out.println("DEBUG: Got " + testCustomers.size() + " customers for test");
+
+            if (!testCustomers.isEmpty()) {
+                System.out.println("DEBUG: Calling JasperReportsUtil.showPrintPreview for test...");
+                JasperReportsUtil.showPrintPreview(testCustomers, primaryStage);
+                System.out.println("DEBUG: JasperReports test completed successfully");
+            }
+        } catch (Exception e) {
+            System.err.println("DEBUG: JasperReports test failed: " + e.getMessage());
+            e.printStackTrace();
         }
     }
     
@@ -717,5 +739,92 @@ public class MainViewController implements Initializable {
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    // JasperReports Handler Methods
+
+    @FXML
+    private void handlePrintPreview() {
+        System.out.println("DEBUG: ========== PRINT PREVIEW CLICKED ==========");
+
+        if (!DatabaseConnection.isConnected()) {
+            System.out.println("DEBUG: Database not connected for print preview");
+            showNotConnectedAlert();
+            return;
+        }
+
+        try {
+            System.out.println("DEBUG: Loading customers for print preview...");
+            System.out.println("DEBUG: Current search term: '" + currentSearch + "'");
+
+            // Get customers based on current search filter
+            List<Customer> filteredCustomers;
+            if (currentSearch == null || currentSearch.trim().isEmpty()) {
+                // If no search, get all customers
+                filteredCustomers = controller.getCustomers(totalRecords, 0, "");
+                System.out.println("DEBUG: No search filter - loading all " + filteredCustomers.size() + " customers");
+            } else {
+                // If there's a search, get filtered customers (use a large limit to get all filtered results)
+                filteredCustomers = controller.getCustomers(10000, 0, currentSearch);
+                System.out.println("DEBUG: Search filter '" + currentSearch + "' - loading " + filteredCustomers.size() + " customers");
+            }
+
+            if (filteredCustomers.isEmpty()) {
+                System.out.println("DEBUG: No customers found for report");
+                showAlert(Alert.AlertType.INFORMATION, "No Data", "No Data to Preview",
+                         "There are no customers to display in the report based on current filter.");
+                return;
+            }
+
+            System.out.println("DEBUG: Calling JasperReportsUtil.showPrintPreview...");
+            // Show print preview
+            JasperReportsUtil.showPrintPreview(filteredCustomers, primaryStage);
+            System.out.println("DEBUG: Print preview completed");
+
+        } catch (SQLException e) {
+            System.err.println("DEBUG: SQL Error in print preview: " + e.getMessage());
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Database Error", "Failed to load data for preview", e.getMessage());
+        } catch (Exception e) {
+            System.err.println("DEBUG: General Error in print preview: " + e.getMessage());
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to generate preview", e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleExportPDF() {
+        if (!DatabaseConnection.isConnected()) {
+            showNotConnectedAlert();
+            return;
+        }
+
+        try {
+            System.out.println("DEBUG: Current search term for export: '" + currentSearch + "'");
+
+            // Get customers based on current search filter
+            List<Customer> filteredCustomers;
+            if (currentSearch == null || currentSearch.trim().isEmpty()) {
+                // If no search, get all customers
+                filteredCustomers = controller.getCustomers(totalRecords, 0, "");
+                System.out.println("DEBUG: Export - No search filter, loading all " + filteredCustomers.size() + " customers");
+            } else {
+                // If there's a search, get filtered customers (use a large limit to get all filtered results)
+                filteredCustomers = controller.getCustomers(10000, 0, currentSearch);
+                System.out.println("DEBUG: Export - Search filter '" + currentSearch + "', loading " + filteredCustomers.size() + " customers");
+            }
+
+            if (filteredCustomers.isEmpty()) {
+                showAlert(Alert.AlertType.INFORMATION, "No Data", "No Data to Export",
+                         "There are no customers to export to PDF based on current filter.");
+                return;
+            }
+
+            // Export to PDF
+            JasperReportsUtil.exportToPDF(filteredCustomers, primaryStage);
+
+        } catch (SQLException e) {
+            showAlert(Alert.AlertType.ERROR, "Database Error", "Failed to load data for export", e.getMessage());
+        }
     }
 }

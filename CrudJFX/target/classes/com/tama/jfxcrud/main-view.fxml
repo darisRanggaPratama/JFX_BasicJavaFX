@@ -21,6 +21,9 @@
                 <Menu text="Data">
                     <MenuItem text="Add Data" onAction="#handleAddData"/>
                     <MenuItem text="Refresh Table" onAction="#handleRefreshTable"/>
+                    <SeparatorMenuItem />
+                    <MenuItem text="Print Preview" onAction="#handlePrintPreview"/>
+                    <MenuItem text="Export to PDF" onAction="#handleExportPDF"/>
                 </Menu>
                 <Menu text="CSV">
                     <MenuItem text="Upload CSV" onAction="#handleUploadCSV"/>

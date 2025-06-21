@@ -1,0 +1,180 @@
+DEBUG: Search field changed from '' to 'g'
+DEBUG: isConnected() - closed: false, valid: true
+DEBUG: Loading data - Page: 1, RowsPerPage: 10, Offset: 0, Search: 'g'
+DEBUG: Executing query: SELECT * FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?) LIMIT ? OFFSET ?
+DEBUG: Parameters - limit: 10, offset: 0, searchTerm: 'g'
+DEBUG: Found customer: Customer{idx=1, nik='845723', name='Eren Yeager', born=2000-03-30, active=true, salary=7500000}
+DEBUG: Found customer: Customer{idx=6, nik='138492', name='Hange Zoë', born=1987-09-05, active=true, salary=8500000}
+DEBUG: Found customer: Customer{idx=9, nik='476812', name='Connie Springer', born=2001-05-02, active=true, salary=5000000}
+DEBUG: Found customer: Customer{idx=14, nik='765890', name='Zeke Yeager', born=1983-06-17, active=false, salary=11000000}
+DEBUG: Found customer: Customer{idx=16, nik='908123', name='Falco Grice', born=2006-10-20, active=true, salary=4000000}
+DEBUG: Found customer: Customer{idx=17, nik='675349', name='Gabi Braun', born=2007-04-11, active=true, salary=3500000}
+DEBUG: Found customer: Customer{idx=18, nik='341289', name='Pieck Finger', born=1995-09-03, active=true, salary=9000000}
+DEBUG: Found customer: Customer{idx=19, nik='582934', name='Porco Galliard', born=1996-02-08, active=false, salary=8700000}
+DEBUG: Found customer: Customer{idx=22, nik='112234', name='Keigo Takami (Hawks)', born=1993-12-28, active=true, salary=13000000}
+DEBUG: Found customer: Customer{idx=23, nik='145566', name='Tomura Shigaraki', born=1999-04-04, active=false, salary=9000000}
+DEBUG: Total customers found: 10
+DEBUG: Count query: SELECT COUNT(*) FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?)
+DEBUG: Total customer count: 55
+DEBUG: Retrieved 10 customers, Total records: 55, Total pages: 6
+DEBUG: Pagination updated - Page 1 of 6 (Total records: 55)
+DEBUG: Previous button disabled: true, Next button disabled: false
+DEBUG: Search field changed from 'g' to 'gr'
+DEBUG: isConnected() - closed: false, valid: true
+DEBUG: Loading data - Page: 1, RowsPerPage: 10, Offset: 0, Search: 'gr'
+DEBUG: Executing query: SELECT * FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?) LIMIT ? OFFSET ?
+DEBUG: Parameters - limit: 10, offset: 0, searchTerm: 'gr'
+DEBUG: Found customer: Customer{idx=16, nik='908123', name='Falco Grice', born=2006-10-20, active=true, salary=4000000}
+DEBUG: Found customer: Customer{idx=41, nik='100001', name='Rudeus Greyrat', born=2005-02-01, active=true, salary=20000000}
+DEBUG: Found customer: Customer{idx=43, nik='345678', name='Eris Boreas Greyrat', born=2003-11-30, active=true, salary=22000000}
+DEBUG: Found customer: Customer{idx=45, nik='567890', name='Paul Greyrat', born=1980-05-10, active=false, salary=15000000}
+DEBUG: Found customer: Customer{idx=46, nik='678901', name='Zenith Greyrat', born=1982-09-20, active=false, salary=12000000}
+DEBUG: Found customer: Customer{idx=48, nik='890123', name='Aisha Greyrat', born=2010-07-05, active=true, salary=4000000}
+DEBUG: Found customer: Customer{idx=49, nik='901234', name='Norn Greyrat', born=2012-10-18, active=true, salary=3500000}
+DEBUG: Found customer: Customer{idx=57, nik='889900', name='Cliff Grimoire', born=2000-12-25, active=true, salary=10000000}
+DEBUG: Total customers found: 8
+DEBUG: Count query: SELECT COUNT(*) FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?)
+DEBUG: Total customer count: 8
+DEBUG: Retrieved 8 customers, Total records: 8, Total pages: 1
+DEBUG: Pagination updated - Page 1 of 1 (Total records: 8)
+DEBUG: Previous button disabled: true, Next button disabled: true
+DEBUG: Search field changed from 'gr' to 'gre'
+DEBUG: isConnected() - closed: false, valid: true
+DEBUG: Loading data - Page: 1, RowsPerPage: 10, Offset: 0, Search: 'gre'
+DEBUG: Executing query: SELECT * FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?) LIMIT ? OFFSET ?
+DEBUG: Parameters - limit: 10, offset: 0, searchTerm: 'gre'
+DEBUG: Found customer: Customer{idx=41, nik='100001', name='Rudeus Greyrat', born=2005-02-01, active=true, salary=20000000}
+DEBUG: Found customer: Customer{idx=43, nik='345678', name='Eris Boreas Greyrat', born=2003-11-30, active=true, salary=22000000}
+DEBUG: Found customer: Customer{idx=45, nik='567890', name='Paul Greyrat', born=1980-05-10, active=false, salary=15000000}
+DEBUG: Found customer: Customer{idx=46, nik='678901', name='Zenith Greyrat', born=1982-09-20, active=false, salary=12000000}
+DEBUG: Found customer: Customer{idx=48, nik='890123', name='Aisha Greyrat', born=2010-07-05, active=true, salary=4000000}
+DEBUG: Found customer: Customer{idx=49, nik='901234', name='Norn Greyrat', born=2012-10-18, active=true, salary=3500000}
+DEBUG: Total customers found: 6
+DEBUG: Count query: SELECT COUNT(*) FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?)
+DEBUG: Total customer count: 6
+DEBUG: Retrieved 6 customers, Total records: 6, Total pages: 1
+DEBUG: Pagination updated - Page 1 of 1 (Total records: 6)
+DEBUG: Previous button disabled: true, Next button disabled: true
+DEBUG: Search field changed from 'gre' to 'grey'
+DEBUG: isConnected() - closed: false, valid: true
+DEBUG: Loading data - Page: 1, RowsPerPage: 10, Offset: 0, Search: 'grey'
+DEBUG: Executing query: SELECT * FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?) LIMIT ? OFFSET ?
+DEBUG: Parameters - limit: 10, offset: 0, searchTerm: 'grey'
+DEBUG: Found customer: Customer{idx=41, nik='100001', name='Rudeus Greyrat', born=2005-02-01, active=true, salary=20000000}
+DEBUG: Found customer: Customer{idx=43, nik='345678', name='Eris Boreas Greyrat', born=2003-11-30, active=true, salary=22000000}
+DEBUG: Found customer: Customer{idx=45, nik='567890', name='Paul Greyrat', born=1980-05-10, active=false, salary=15000000}
+DEBUG: Found customer: Customer{idx=46, nik='678901', name='Zenith Greyrat', born=1982-09-20, active=false, salary=12000000}
+DEBUG: Found customer: Customer{idx=48, nik='890123', name='Aisha Greyrat', born=2010-07-05, active=true, salary=4000000}
+DEBUG: Found customer: Customer{idx=49, nik='901234', name='Norn Greyrat', born=2012-10-18, active=true, salary=3500000}
+DEBUG: Total customers found: 6
+DEBUG: Count query: SELECT COUNT(*) FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?)
+DEBUG: Total customer count: 6
+DEBUG: Retrieved 6 customers, Total records: 6, Total pages: 1
+DEBUG: Pagination updated - Page 1 of 1 (Total records: 6)
+DEBUG: Previous button disabled: true, Next button disabled: true
+DEBUG: ========== PRINT PREVIEW CLICKED ==========
+DEBUG: isConnected() - closed: false, valid: true
+DEBUG: Loading customers for print preview...
+DEBUG: Current search term: 'grey'
+DEBUG: Executing query: SELECT * FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?) LIMIT ? OFFSET ?
+DEBUG: Parameters - limit: 10000, offset: 0, searchTerm: 'grey'
+DEBUG: Found customer: Customer{idx=41, nik='100001', name='Rudeus Greyrat', born=2005-02-01, active=true, salary=20000000}
+DEBUG: Found customer: Customer{idx=43, nik='345678', name='Eris Boreas Greyrat', born=2003-11-30, active=true, salary=22000000}
+DEBUG: Found customer: Customer{idx=45, nik='567890', name='Paul Greyrat', born=1980-05-10, active=false, salary=15000000}
+DEBUG: Found customer: Customer{idx=46, nik='678901', name='Zenith Greyrat', born=1982-09-20, active=false, salary=12000000}
+DEBUG: Found customer: Customer{idx=48, nik='890123', name='Aisha Greyrat', born=2010-07-05, active=true, salary=4000000}
+DEBUG: Found customer: Customer{idx=49, nik='901234', name='Norn Greyrat', born=2012-10-18, active=true, salary=3500000}
+DEBUG: Total customers found: 6
+DEBUG: Search filter 'grey' - loading 6 customers
+DEBUG: Calling JasperReportsUtil.showPrintPreview...
+DEBUG: JasperReportsUtil.showPrintPreview called with 6 customers
+DEBUG: Generating report...
+DEBUG: Error in showPrintPreview: null
+java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.tama.jfxcrud/com.tama.jfxcrud.util.JasperReportsUtil.compileReport(JasperReportsUtil.java:37)
+	at com.tama.jfxcrud/com.tama.jfxcrud.util.JasperReportsUtil.generateReport(JasperReportsUtil.java:45)
+	at com.tama.jfxcrud/com.tama.jfxcrud.util.JasperReportsUtil.showPrintPreview(JasperReportsUtil.java:89)
+	at com.tama.jfxcrud/com.tama.jfxcrud.controller.MainViewController.handlePrintPreview(MainViewController.java:781)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base@21/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
+	at javafx.fxml@21/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1855)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1726)
+	at javafx.base@21/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@21/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.controls@21/javafx.scene.control.MenuItem.fire(MenuItem.java:459)
+	at javafx.controls@21/com.sun.javafx.scene.control.ContextMenuContent$MenuItemContainer.doSelect(ContextMenuContent.java:1415)
+	at javafx.controls@21/com.sun.javafx.scene.control.ContextMenuContent$MenuItemContainer.lambda$createChildren$12(ContextMenuContent.java:1368)
+	at javafx.base@21/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@21/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@21/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21/javafx.scene.Scene$MouseHandler.process(Scene.java:3984)
+	at javafx.graphics@21/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@21/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708)
+	at javafx.graphics@21/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@21/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@21/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@21/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@21/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@21/com.sun.glass.ui.mac.MacView.notifyMouse(MacView.java:127)
+Caused by: net.sf.jasperreports.engine.JRException: Unable to load report
+	at net.sf.jasperreports.engine.xml.JRXmlLoader.loadXML(JRXmlLoader.java:172)
+	at net.sf.jasperreports.engine.xml.JRXmlLoader.load(JRXmlLoader.java:149)
+	at net.sf.jasperreports.engine.xml.JRXmlLoader.load(JRXmlLoader.java:136)
+	at net.sf.jasperreports.engine.JasperCompileManager.compile(JasperCompileManager.java:334)
+	at net.sf.jasperreports.engine.JasperCompileManager.compileReport(JasperCompileManager.java:601)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	... 53 more
+DEBUG: Print preview completed
+DEBUG: isConnected() - closed: false, valid: true
+DEBUG: Current search term for export: 'grey'
+DEBUG: Executing query: SELECT * FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?) LIMIT ? OFFSET ?
+DEBUG: Parameters - limit: 10000, offset: 0, searchTerm: 'grey'
+DEBUG: Found customer: Customer{idx=41, nik='100001', name='Rudeus Greyrat', born=2005-02-01, active=true, salary=20000000}
+DEBUG: Found customer: Customer{idx=43, nik='345678', name='Eris Boreas Greyrat', born=2003-11-30, active=true, salary=22000000}
+DEBUG: Found customer: Customer{idx=45, nik='567890', name='Paul Greyrat', born=1980-05-10, active=false, salary=15000000}
+DEBUG: Found customer: Customer{idx=46, nik='678901', name='Zenith Greyrat', born=1982-09-20, active=false, salary=12000000}
+DEBUG: Found customer: Customer{idx=48, nik='890123', name='Aisha Greyrat', born=2010-07-05, active=true, salary=4000000}
+DEBUG: Found customer: Customer{idx=49, nik='901234', name='Norn Greyrat', born=2012-10-18, active=true, salary=3500000}
+DEBUG: Total customers found: 6
+DEBUG: Export - Search filter 'grey', loading 6 customers
+DEBUG: isConnected() - closed: false, valid: true
+DEBUG: Current search term for print: 'grey'
+DEBUG: Executing query: SELECT * FROM customer WHERE 1=1 AND (nik LIKE ? OR name LIKE ? OR born LIKE ? OR CAST(active AS CHAR) LIKE ? OR CAST(salary AS CHAR) LIKE ?) LIMIT ? OFFSET ?
+DEBUG: Parameters - limit: 10000, offset: 0, searchTerm: 'grey'
+DEBUG: Found customer: Customer{idx=41, nik='100001', name='Rudeus Greyrat', born=2005-02-01, active=true, salary=20000000}
+DEBUG: Found customer: Customer{idx=43, nik='345678', name='Eris Boreas Greyrat', born=2003-11-30, active=true, salary=22000000}
+DEBUG: Found customer: Customer{idx=45, nik='567890', name='Paul Greyrat', born=1980-05-10, active=false, salary=15000000}
+DEBUG: Found customer: Customer{idx=46, nik='678901', name='Zenith Greyrat', born=1982-09-20, active=false, salary=12000000}
+DEBUG: Found customer: Customer{idx=48, nik='890123', name='Aisha Greyrat', born=2010-07-05, active=true, salary=4000000}
+DEBUG: Found customer: Customer{idx=49, nik='901234', name='Norn Greyrat', born=2012-10-18, active=true, salary=3500000}
+DEBUG: Total customers found: 6
+DEBUG: Print - Search filter 'grey', loading 6 customers

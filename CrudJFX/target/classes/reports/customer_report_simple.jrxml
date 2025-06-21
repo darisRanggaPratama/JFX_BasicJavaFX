@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="customer_report_simple"
+              pageWidth="595"
+              pageHeight="842"
+              columnWidth="555"
+              leftMargin="20"
+              rightMargin="20"
+              topMargin="20"
+              bottomMargin="20"
+              uuid="12345678-1234-1234-1234-123456789012">
+
+    <field name="idx" class="java.lang.Integer"/>
+    <field name="nik" class="java.lang.String"/>
+    <field name="name" class="java.lang.String"/>
+    <field name="born" class="java.lang.String"/>
+    <field name="active" class="java.lang.Boolean"/>
+    <field name="salary" class="java.lang.Integer"/>
+
+    <variable name="totalSalary" class="java.lang.Long" calculation="Sum">
+        <variableExpression><![CDATA[$F{salary}]]></variableExpression>
+    </variable>
+
+    <title>
+        <band height="50">
+            <staticText>
+                <reportElement x="0" y="0" width="555" height="30" uuid="title-uuid"/>
+                <textElement textAlignment="Center">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Customer Management Report]]></text>
+            </staticText>
+            <textField pattern="dd/MM/yyyy HH:mm:ss">
+                <reportElement x="0" y="30" width="555" height="20" uuid="date-uuid"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="25">
+            <staticText>
+                <reportElement x="0" y="0" width="50" height="25" uuid="header-idx"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[ID]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="50" y="0" width="80" height="25" uuid="header-nik"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[NIK]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="130" y="0" width="150" height="25" uuid="header-name"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Name]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="280" y="0" width="80" height="25" uuid="header-born"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Born Date]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="360" y="0" width="60" height="25" uuid="header-active"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Active]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="420" y="0" width="135" height="25" uuid="header-salary"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Salary]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="0" y="0" width="50" height="20" uuid="detail-idx"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{idx}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="50" y="0" width="80" height="20" uuid="detail-nik"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{nik}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="130" y="0" width="150" height="20" uuid="detail-name"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="280" y="0" width="80" height="20" uuid="detail-born"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{born}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="360" y="0" width="60" height="20" uuid="detail-active"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{active} ? "Yes" : "No"]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement x="420" y="0" width="135" height="20" uuid="detail-salary"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <summary>
+        <band height="40">
+            <staticText>
+                <reportElement x="280" y="10" width="140" height="20" uuid="summary-label"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Total Salary:]]></text>
+            </staticText>
+            <textField pattern="#,##0">
+                <reportElement x="420" y="10" width="135" height="20" uuid="summary-total"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{totalSalary}]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+
+    <pageFooter>
+        <band height="25">
+            <textField>
+                <reportElement x="0" y="5" width="280" height="20" uuid="footer-date"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA["Generated on: " + new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
+            </textField>
+            <textField evaluationTime="Report">
+                <reportElement x="380" y="5" width="175" height="20" uuid="footer-page"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+</jasperReport>
