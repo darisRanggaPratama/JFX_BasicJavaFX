@@ -1,0 +1,62 @@
+/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/bin/java -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:57133,suspend=y,server=n -javaagent:/Users/rangga/Library/Caches/JetBrains/IntelliJIdea2025.1/captureAgent/debugger-agent.jar=file:///var/folders/99/7zy1mp3s0l58npsjd61sr0xr0000gn/T/capture15565209272343678629.props -agentpath:/private/var/folders/99/7zy1mp3s0l58npsjd61sr0xr0000gn/T/idea_libasyncProfiler_dylib_temp_folder/libasyncProfiler.dylib=version,jfr,event=wall,interval=10ms,cstack=no,file=/Users/rangga/IdeaSnapshots/HelloApplication_2025_06_21_182509.jfr,log=/private/var/folders/99/7zy1mp3s0l58npsjd61sr0xr0000gn/T/HelloApplication_2025_06_21_182509.jfr.log.txt,logLevel=DEBUG -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false -Ddebugger.agent.enable.coroutines=true -Dkotlinx.coroutines.debug.enable.flows.stack.trace=true -Dkotlinx.coroutines.debug.enable.mutable.state.flows.stack.trace=true -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /Users/rangga/.m2/repository/org/openjfx/javafx-controls/21/javafx-controls-21.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-graphics/21/javafx-graphics-21.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-base/21/javafx-base-21.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-fxml/21/javafx-fxml-21.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-web/21/javafx-web-21.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-media/21/javafx-media-21.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-swing/21/javafx-swing-21.jar:/Users/rangga/.m2/repository/com/github/virtuald/curvesapi/1.07/curvesapi-1.07.jar:/Users/rangga/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar:/Users/rangga/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar -p /Users/rangga/.m2/repository/com/dlsc/formsfx/formsfx-core/11.6.0/formsfx-core-11.6.0.jar:/Users/rangga/.m2/repository/net/synedra/validatorfx/0.5.0/validatorfx-0.5.0.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-web/21/javafx-web-21-mac-aarch64.jar:/Users/rangga/.m2/repository/org/kordamp/ikonli/ikonli-javafx/12.3.1/ikonli-javafx-12.3.1.jar:/Users/rangga/.m2/repository/eu/hansolo/fx/countries/21.0.3/countries-21.0.3.jar:/Users/rangga/.m2/repository/org/kordamp/bootstrapfx/bootstrapfx-core/0.4.0/bootstrapfx-core-0.4.0.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-base/21/javafx-base-21-mac-aarch64.jar:/Users/rangga/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/Users/rangga/.m2/repository/org/apache/poi/poi-ooxml/5.2.3/poi-ooxml-5.2.3.jar:/Users/rangga/.m2/repository/eu/hansolo/toolbox/21.0.5/toolbox-21.0.5.jar:/Users/rangga/.m2/repository/org/kordamp/ikonli/ikonli-core/12.3.1/ikonli-core-12.3.1.jar:/Users/rangga/.m2/repository/eu/hansolo/toolboxfx/21.0.3/toolboxfx-21.0.3.jar:/Users/rangga/.m2/repository/org/controlsfx/controlsfx/11.2.1/controlsfx-11.2.1.jar:/Users/rangga/.m2/repository/org/apache/poi/poi-ooxml-lite/5.2.3/poi-ooxml-lite-5.2.3.jar:/Users/rangga/.m2/repository/eu/hansolo/tilesfx/21.0.3/tilesfx-21.0.3.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-controls/21/javafx-controls-21-mac-aarch64.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-graphics/21/javafx-graphics-21-mac-aarch64.jar:/Users/rangga/.m2/repository/org/apache/xmlbeans/xmlbeans/5.1.1/xmlbeans-5.1.1.jar:/Users/rangga/.m2/repository/org/apache/logging/log4j/log4j-api/2.18.0/log4j-api-2.18.0.jar:/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/target/classes:/Users/rangga/.m2/repository/org/openjfx/javafx-swing/21/javafx-swing-21-mac-aarch64.jar:/Users/rangga/.m2/repository/org/apache/commons/commons-compress/1.21/commons-compress-1.21.jar:/Users/rangga/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/Users/rangga/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-media/21/javafx-media-21-mac-aarch64.jar:/Users/rangga/.m2/repository/eu/hansolo/fx/heatmap/21.0.3/heatmap-21.0.3.jar:/Users/rangga/.m2/repository/org/openjfx/javafx-fxml/21/javafx-fxml-21-mac-aarch64.jar:/Users/rangga/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/Users/rangga/.m2/repository/org/apache/poi/poi/5.2.3/poi-5.2.3.jar:/Users/rangga/.m2/repository/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar -m com.tama.jfxcrud/com.tama.jfxcrud.CrudApp
+Connected to the target VM, address: '127.0.0.1:57133', transport: 'socket'
+Exception in Application start method
+java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.graphics@21/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:464)
+	at javafx.graphics@21/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1135)
+Caused by: java.lang.RuntimeException: Exception in Application start method
+	at javafx.graphics@21/com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:893)
+	at javafx.graphics@21/com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: javafx.fxml.LoadException:
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/target/classes/com/tama/jfxcrud/main-view.fxml:16
+
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2700)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.tama.jfxcrud/com.tama.jfxcrud.CrudApp.start(HelloApplication.java:16)
+	at javafx.graphics@21/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:839)
+	at javafx.graphics@21/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:483)
+	at javafx.graphics@21/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
+	at javafx.graphics@21/com.sun.glass.ui.InvokeLaterDispatcher$Future.run$$$capture(InvokeLaterDispatcher.java:95)
+	at javafx.graphics@21/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java)
+	at --- Async.Stack.Trace --- (captured by IntelliJ IDEA debugger)
+	at javafx.graphics@21/com.sun.glass.ui.InvokeLaterDispatcher.invokeLater(InvokeLaterDispatcher.java)
+	at javafx.graphics@21/com.sun.glass.ui.mac.MacApplication._invokeLater(MacApplication.java:346)
+	at javafx.graphics@21/com.sun.glass.ui.Application.invokeLater(Application.java:485)
+	at javafx.graphics@21/com.sun.javafx.tk.quantum.QuantumToolkit.defer(QuantumToolkit.java:826)
+	at javafx.graphics@21/com.sun.javafx.application.PlatformImpl.runLater(PlatformImpl.java:452)
+	at javafx.graphics@21/com.sun.javafx.application.PlatformImpl.runAndWait(PlatformImpl.java:481)
+	at javafx.graphics@21/com.sun.javafx.application.PlatformImpl.runAndWait(PlatformImpl.java:468)
+	at javafx.graphics@21/com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:832)
+	... 2 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make private void com.tama.jfxcrud.controller.MainViewController.handleExit() accessible: module com.tama.jfxcrud does not "opens com.tama.jfxcrud.controller" to module javafx.fxml
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:203)
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:197)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$ControllerAccessor.addAccessibleMethods(FXMLLoader.java:3656)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$ControllerAccessor$1.run(FXMLLoader.java:3588)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$ControllerAccessor$1.run(FXMLLoader.java:3581)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:319)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$ControllerAccessor.addAccessibleMembers(FXMLLoader.java:3580)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$ControllerAccessor.getControllerMethods(FXMLLoader.java:3539)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$Element.getControllerMethodHandle(FXMLLoader.java:575)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$Element.processEventHandlerAttributes(FXMLLoader.java:612)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$ValueElement.processEndElement(FXMLLoader.java:783)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.processEndElement(FXMLLoader.java:2969)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	... 21 more
+Exception running application com.tama.jfxcrud.CrudApp
+Disconnected from the target VM, address: '127.0.0.1:57133', transport: 'socket'
+
+Process finished with exit code 1

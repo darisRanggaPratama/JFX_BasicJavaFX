@@ -1,0 +1,12 @@
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/HelloApplication.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/HelloController.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/controller/CustomerController.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/controller/MainViewController.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/dao/CustomerDAO.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/model/Customer.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/util/CSVHandler.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/util/DatabaseConnection.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/util/ExcelHandler.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/view/ConnectionSetupView.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/com/tama/jfxcrud/view/MainView.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/JFXCrud/src/main/java/module-info.java
