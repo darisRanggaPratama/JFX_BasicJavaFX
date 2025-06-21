@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tama.basicjfx.ComboList.StudentController">
+   <children>
+      <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" />
+      <VBox prefHeight="400.0" prefWidth="400.0">
+         <children>
+            <TableView fx:id="table" prefHeight="215.0" prefWidth="366.0">
+              <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+
+              </columns>
+            </TableView>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <ComboBox fx:id="cBox" prefWidth="150.0" BorderPane.alignment="CENTER" />
+               </center>
+               <bottom>
+                  <Button fx:id="tester" mnemonicParsing="false" onAction="#buttonAction" prefHeight="25.0" prefWidth="118.0" text="Button" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="20.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </bottom>
+            </BorderPane>
+         </children>
+      </VBox>
+   </children>
+</HBox>
