@@ -1,0 +1,48 @@
+/* Button styles */
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+}
+
+.icon-button:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 5px;
+}
+
+.icon-button .ikonli-font-icon {
+    -fx-icon-size: 16px;
+}
+
+/* Edit button specific */
+.icon-button.edit-button .ikonli-font-icon {
+    -fx-icon-color: #2196F3;
+}
+
+/* Delete button specific */
+.icon-button.delete-button .ikonli-font-icon {
+    -fx-icon-color: #F44336;
+}
+
+/* Table styles */
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Add and Refresh button styles */
+#btnAdd, #btnRefresh, #btnPrint {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5px;
+}
+
+#btnAdd:hover, #btnRefresh:hover, #btnPrint:hover {
+    -fx-background-color: #0056b3;
+}
