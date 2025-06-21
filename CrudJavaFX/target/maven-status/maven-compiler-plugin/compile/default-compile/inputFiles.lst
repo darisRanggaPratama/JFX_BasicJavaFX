@@ -1,0 +1,11 @@
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/com/tama/crudxmljavafx/HelloApplication.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/com/tama/crudxmljavafx/HelloController.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/com/tama/crudxmljavafx/controller/CustomerFormController.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/com/tama/crudxmljavafx/controller/MainController.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/com/tama/crudxmljavafx/model/Customer.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/com/tama/crudxmljavafx/repository/CustomerRepository.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/com/tama/crudxmljavafx/service/CustomerService.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/com/tama/crudxmljavafx/util/AlertUtil.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/com/tama/crudxmljavafx/util/DatabaseConnection.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/com/tama/crudxmljavafx/util/FileUtil.java
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/CrudXMLJavaFX/src/main/java/module-info.java
