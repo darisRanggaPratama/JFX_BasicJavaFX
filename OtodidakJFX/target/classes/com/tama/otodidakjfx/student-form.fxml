@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tama.otodidakjfx.StudentFormController">
+   <top>
+      <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="title" text="Form Pendaftaran Mahasiswa">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label styleClass="subtitle" text="Aplikasi FXML dengan Validasi Form" />
+            <Separator />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+         <content>
+            <VBox spacing="20.0">
+               <children>
+                  <!-- Personal Information Section -->
+                  <VBox spacing="15.0" styleClass="card">
+                     <children>
+                        <Label styleClass="section-title" text="Informasi Pribadi" />
+                        <GridPane hgap="15.0" vgap="15.0">
+                           <children>
+                              <!-- Student ID -->
+                              <Label styleClass="form-label" text="NIM:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                              <TextField fx:id="nimField" promptText="Masukkan NIM (8 digit)" styleClass="custom-text-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              <Label fx:id="nimErrorLabel" styleClass="error-label" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                              
+                              <!-- Full Name -->
+                              <Label styleClass="form-label" text="Nama Lengkap:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                              <TextField fx:id="nameField" promptText="Masukkan nama lengkap" styleClass="custom-text-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="nameErrorLabel" styleClass="error-label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              
+                              <!-- Email -->
+                              <Label styleClass="form-label" text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                              <TextField fx:id="emailField" promptText="contoh@email.com" styleClass="custom-text-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="emailErrorLabel" styleClass="error-label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              
+                              <!-- Phone -->
+                              <Label styleClass="form-label" text="No. Telepon:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                              <TextField fx:id="phoneField" promptText="08xxxxxxxxxx" styleClass="custom-text-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label fx:id="phoneErrorLabel" styleClass="error-label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              
+                              <!-- Birth Date -->
+                              <Label styleClass="form-label" text="Tanggal Lahir:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                              <DatePicker fx:id="birthDatePicker" promptText="Pilih tanggal lahir" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="birthDateErrorLabel" styleClass="error-label" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              
+                              <!-- Gender -->
+                              <Label styleClass="form-label" text="Jenis Kelamin:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                              <HBox spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <children>
+                                    <RadioButton fx:id="maleRadio" mnemonicParsing="false" text="Laki-laki" />
+                                    <RadioButton fx:id="femaleRadio" mnemonicParsing="false" text="Perempuan" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="genderErrorLabel" styleClass="error-label" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="150.0" />
+                           </columnConstraints>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Academic Information Section -->
+                  <VBox spacing="15.0" styleClass="card">
+                     <children>
+                        <Label styleClass="section-title" text="Informasi Akademik" />
+                        <GridPane hgap="15.0" vgap="15.0">
+                           <children>
+                              <!-- Faculty -->
+                              <Label styleClass="form-label" text="Fakultas:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                              <ComboBox fx:id="facultyComboBox" promptText="Pilih fakultas" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              <Label fx:id="facultyErrorLabel" styleClass="error-label" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                              
+                              <!-- Major -->
+                              <Label styleClass="form-label" text="Program Studi:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="majorComboBox" promptText="Pilih program studi" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="majorErrorLabel" styleClass="error-label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              
+                              <!-- Entry Year -->
+                              <Label styleClass="form-label" text="Tahun Masuk:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                              <Spinner fx:id="entryYearSpinner" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="entryYearErrorLabel" styleClass="error-label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              
+                              <!-- GPA -->
+                              <Label styleClass="form-label" text="IPK Saat Ini:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                              <TextField fx:id="gpaField" promptText="0.00 - 4.00" styleClass="custom-text-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label fx:id="gpaErrorLabel" styleClass="error-label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="150.0" />
+                           </columnConstraints>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Additional Information Section -->
+                  <VBox spacing="15.0" styleClass="card">
+                     <children>
+                        <Label styleClass="section-title" text="Informasi Tambahan" />
+                        <VBox spacing="10.0">
+                           <children>
+                              <Label styleClass="form-label" text="Alamat:" />
+                              <TextArea fx:id="addressArea" prefRowCount="3" promptText="Masukkan alamat lengkap" />
+                              <Label fx:id="addressErrorLabel" styleClass="error-label" />
+                              
+                              <Label styleClass="form-label" text="Hobi dan Minat:" />
+                              <ListView fx:id="hobbiesListView" prefHeight="100.0" />
+                              
+                              <CheckBox fx:id="agreementCheckBox" text="Saya menyetujui syarat dan ketentuan yang berlaku" />
+                              <Label fx:id="agreementErrorLabel" styleClass="error-label" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Buttons Section -->
+                  <VBox spacing="15.0">
+                     <children>
+                        <!-- Main Action Buttons -->
+                        <HBox alignment="CENTER" spacing="20.0">
+                           <children>
+                              <Button fx:id="validateButton" mnemonicParsing="false" onAction="#handleValidate" styleClass="custom-button" text="Validasi Form" />
+                              <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmit" styleClass="success-button" text="Submit" />
+                              <Button fx:id="clearButton" mnemonicParsing="false" onAction="#handleClear" styleClass="danger-button" text="Clear" />
+                              <Button fx:id="previewButton" mnemonicParsing="false" onAction="#handlePreview" styleClass="custom-button" text="Preview" />
+                           </children>
+                        </HBox>
+
+                        <!-- Report Generation Buttons -->
+                        <Separator />
+                        <Label styleClass="section-title" text="📊 Laporan dan Cetak" />
+                        <HBox alignment="CENTER" spacing="15.0">
+                           <children>
+                              <Button fx:id="generateReportsButton" mnemonicParsing="false" onAction="#handleGenerateReports" styleClass="custom-button" text="🖨️ Generate Reports" />
+                              <Label styleClass="subtitle" text="Cetak kartu pendaftaran dan daftar mahasiswa" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

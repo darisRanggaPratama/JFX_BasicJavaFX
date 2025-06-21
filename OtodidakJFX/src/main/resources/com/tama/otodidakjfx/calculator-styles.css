@@ -1,0 +1,164 @@
+/* Calculator Specific Styles */
+
+.root {
+    -fx-background-color: linear-gradient(to bottom, #2c3e50, #34495e);
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 2);
+}
+
+.subtitle {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Display Field */
+.display-field {
+    -fx-background-color: #1a1a1a;
+    -fx-text-fill: #00ff00;
+    -fx-font-family: "Courier New", monospace;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-border-color: #555555;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.8), 5, 0, 0, 0);
+}
+
+.operation-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #bdc3c7;
+    -fx-font-style: italic;
+}
+
+/* Number Buttons */
+.number-button {
+    -fx-background-color: linear-gradient(to bottom, #ecf0f1, #bdc3c7);
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #95a5a6;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 2);
+}
+
+.number-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+    -fx-cursor: hand;
+}
+
+.number-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #dee2e6, #adb5bd);
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 2, 0, 0, 1);
+}
+
+/* Operation Buttons */
+.operation-button {
+    -fx-background-color: linear-gradient(to bottom, #f39c12, #e67e22);
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #d68910;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 2);
+}
+
+.operation-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #f4d03f, #f39c12);
+    -fx-cursor: hand;
+}
+
+.operation-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #e67e22, #d68910);
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 2, 0, 0, 1);
+}
+
+/* Equals Button */
+.equals-button {
+    -fx-background-color: linear-gradient(to bottom, #27ae60, #229954);
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #1e8449;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 2);
+}
+
+.equals-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #58d68d, #27ae60);
+    -fx-cursor: hand;
+}
+
+.equals-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #229954, #1e8449);
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 2, 0, 0, 1);
+}
+
+/* Clear Button */
+.clear-button {
+    -fx-background-color: linear-gradient(to bottom, #e74c3c, #c0392b);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #a93226;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 2);
+}
+
+.clear-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #ec7063, #e74c3c);
+    -fx-cursor: hand;
+}
+
+.clear-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #c0392b, #a93226);
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 2, 0, 0, 1);
+}
+
+/* History ListView */
+.list-view {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-border-color: #7f8c8d;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+    -fx-font-family: "Courier New", monospace;
+    -fx-font-size: 12px;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: rgba(52, 152, 219, 0.5);
+    -fx-text-fill: white;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Separator */
+.separator .line {
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1px;
+}
