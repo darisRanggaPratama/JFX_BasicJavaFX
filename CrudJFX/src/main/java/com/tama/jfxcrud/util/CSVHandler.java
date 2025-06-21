@@ -4,7 +4,6 @@ import com.tama.jfxcrud.dao.CustomerDAO;
 import com.tama.jfxcrud.model.Customer;
 
 import java.io.*;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;

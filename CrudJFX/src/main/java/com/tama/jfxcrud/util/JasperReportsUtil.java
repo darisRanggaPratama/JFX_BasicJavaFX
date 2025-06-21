@@ -3,7 +3,6 @@ package com.tama.jfxcrud.util;
 import com.tama.jfxcrud.model.Customer;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public class JasperReportsUtil {
 
@@ -200,37 +198,7 @@ public class JasperReportsUtil {
         var exportReportMethod = pdfExporterClass.getMethod("exportReport");
         exportReportMethod.invoke(exporter);
     }
-    
-    /**
-     * Print report directly to printer
-     */
-    public static void printReport(List<Customer> customers) {
-        try {
-            Object jasperPrint = generateReport(customers);
 
-            // Show confirmation dialog
-            Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmAlert.setTitle("Print Confirmation");
-            confirmAlert.setHeaderText("Print Customer Report");
-            confirmAlert.setContentText("Are you sure you want to print the customer report?");
-
-            Optional<ButtonType> result = confirmAlert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                // Print the report using reflection
-                Class<?> printManagerClass = Class.forName("net.sf.jasperreports.engine.JasperPrintManager");
-                var printMethod = printManagerClass.getMethod("printReport",
-                    Class.forName("net.sf.jasperreports.engine.JasperPrint"), boolean.class);
-                printMethod.invoke(null, jasperPrint, true);
-
-                showInfoAlert("Print Success", "Report sent to printer",
-                             "The customer report has been sent to the default printer.");
-            }
-
-        } catch (Exception e) {
-            showErrorAlert("Print Error", "Failed to print report", e.getMessage());
-        }
-    }
-    
     /**
      * Show error alert dialog
      */

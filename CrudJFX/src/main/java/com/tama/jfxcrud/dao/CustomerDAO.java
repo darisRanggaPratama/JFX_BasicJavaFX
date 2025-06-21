@@ -4,7 +4,6 @@ import com.tama.jfxcrud.model.Customer;
 import com.tama.jfxcrud.util.DatabaseConnection;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
