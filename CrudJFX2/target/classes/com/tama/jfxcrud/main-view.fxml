@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.tama.jfxcrud.controller.MainViewController"
+            prefHeight="600.0" prefWidth="800.0">
+    
+    <top>
+        <VBox spacing="10">
+            <MenuBar>
+                <Menu text="Connect">
+                    <MenuItem text="Open Connection" onAction="#handleOpenConnection"/>
+                    <MenuItem text="Close Connection" onAction="#handleCloseConnection"/>
+                    <SeparatorMenuItem />
+                    <MenuItem text="Exit" onAction="#handleExit"/>
+                </Menu>
+                <Menu text="Data">
+                    <MenuItem text="Add Data" onAction="#handleAddData"/>
+                    <MenuItem text="Refresh Table" onAction="#handleRefreshTable"/>
+                    <SeparatorMenuItem />
+                    <MenuItem text="Print Preview" onAction="#handlePrintPreview"/>
+                    <MenuItem text="Export to PDF" onAction="#handleExportPDF"/>
+                </Menu>
+                <Menu text="CSV">
+                    <MenuItem text="Upload CSV" onAction="#handleUploadCSV"/>
+                    <MenuItem text="Download CSV" onAction="#handleDownloadCSV"/>
+                </Menu>
+                <Menu text="Excel">
+                    <MenuItem text="Upload XLSX" onAction="#handleUploadExcel"/>
+                    <MenuItem text="Download XLSX" onAction="#handleDownloadExcel"/>
+                </Menu>
+            </MenuBar>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Label text="Search:"/>
+                <TextField fx:id="searchField" prefWidth="300"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="connectionStatusLabel" text="Not Connected" style="-fx-text-fill: red;"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idxColumn" text="ID"/>
+                <TableColumn fx:id="nikColumn" text="NIK"/>
+                <TableColumn fx:id="nameColumn" text="Name"/>
+                <TableColumn fx:id="bornColumn" text="Born Date"/>
+                <TableColumn fx:id="activeColumn" text="Active"/>
+                <TableColumn fx:id="salaryColumn" text="Salary"/>
+            </columns>
+            <placeholder>
+                <Label text="No data available"/>
+            </placeholder>
+        </TableView>
+    </center>
+    
+    <bottom>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="prevButton" text="Previous" onAction="#handlePrevPage"/>
+                <Label fx:id="pageInfoLabel" text="Page 0 of 0 (Total records: 0)"/>
+                <Button fx:id="nextButton" text="Next" onAction="#handleNextPage"/>
+                <Label text="Rows per page:"/>
+                <ComboBox fx:id="rowsPerPageComboBox" onAction="#handleRowsPerPageChange"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>
