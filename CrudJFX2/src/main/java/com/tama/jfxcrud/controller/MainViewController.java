@@ -392,10 +392,6 @@ public class MainViewController implements Initializable {
             return;
         }
 
-        // Test JasperReports first
-        System.out.println("DEBUG: Testing JasperReports before CSV export...");
-        testJasperReports();
-
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save CSV File");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
@@ -404,8 +400,27 @@ public class MainViewController implements Initializable {
 
         if (file != null) {
             try {
-                List<Customer> allCustomers = controller.getCustomers(totalRecords, 0, currentSearch);
-                Map<String, Integer> result = controller.exportCSV(file, allCustomers);
+                System.out.println("DEBUG: Current search term for CSV export: '" + currentSearch + "'");
+
+                // Get customers based on current search filter (same logic as PDF export)
+                List<Customer> filteredCustomers;
+                if (currentSearch == null || currentSearch.trim().isEmpty()) {
+                    // If no search, get all customers
+                    filteredCustomers = controller.getCustomers(totalRecords, 0, "");
+                    System.out.println("DEBUG: CSV Export - No search filter, loading all " + filteredCustomers.size() + " customers");
+                } else {
+                    // If there's a search, get filtered customers (use a large limit to get all filtered results)
+                    filteredCustomers = controller.getCustomers(10000, 0, currentSearch);
+                    System.out.println("DEBUG: CSV Export - Search filter '" + currentSearch + "', loading " + filteredCustomers.size() + " customers");
+                }
+
+                if (filteredCustomers.isEmpty()) {
+                    showAlert(Alert.AlertType.INFORMATION, "No Data", "No Data to Export",
+                             "There are no customers to export to CSV based on current filter.");
+                    return;
+                }
+
+                Map<String, Integer> result = controller.exportCSV(file, filteredCustomers);
                 showAlert(Alert.AlertType.INFORMATION, "Export Result", "CSV Export Completed",
                         String.format("Successfully exported: %d records\nFailed to export: %d records",
                                 result.get("success"), result.get("failed")));
@@ -415,22 +430,7 @@ public class MainViewController implements Initializable {
         }
     }
 
-    private void testJasperReports() {
-        try {
-            System.out.println("DEBUG: Testing JasperReports functionality...");
-            List<Customer> testCustomers = controller.getCustomers(5, 0, "");
-            System.out.println("DEBUG: Got " + testCustomers.size() + " customers for test");
 
-            if (!testCustomers.isEmpty()) {
-                System.out.println("DEBUG: Calling JasperReportsUtil.showPrintPreview for test...");
-                JasperReportsUtil.showPrintPreview(testCustomers, primaryStage);
-                System.out.println("DEBUG: JasperReports test completed successfully");
-            }
-        } catch (Exception e) {
-            System.err.println("DEBUG: JasperReports test failed: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
     
     @FXML
     private void handleUploadExcel() {
@@ -459,19 +459,38 @@ public class MainViewController implements Initializable {
             showNotConnectedAlert();
             return;
         }
-        
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Excel File");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files", "*.xlsx"));
         fileChooser.setInitialFileName("customers.xlsx");
         File file = fileChooser.showSaveDialog(primaryStage);
-        
+
         if (file != null) {
             try {
-                List<Customer> allCustomers = controller.getCustomers(totalRecords, 0, currentSearch);
-                Map<String, Integer> result = controller.exportExcel(file, allCustomers);
-                showAlert(Alert.AlertType.INFORMATION, "Export Result", "Excel Export Completed", 
-                        String.format("Successfully exported: %d records\nFailed to export: %d records", 
+                System.out.println("DEBUG: Current search term for Excel export: '" + currentSearch + "'");
+
+                // Get customers based on current search filter (same logic as PDF export)
+                List<Customer> filteredCustomers;
+                if (currentSearch == null || currentSearch.trim().isEmpty()) {
+                    // If no search, get all customers
+                    filteredCustomers = controller.getCustomers(totalRecords, 0, "");
+                    System.out.println("DEBUG: Excel Export - No search filter, loading all " + filteredCustomers.size() + " customers");
+                } else {
+                    // If there's a search, get filtered customers (use a large limit to get all filtered results)
+                    filteredCustomers = controller.getCustomers(10000, 0, currentSearch);
+                    System.out.println("DEBUG: Excel Export - Search filter '" + currentSearch + "', loading " + filteredCustomers.size() + " customers");
+                }
+
+                if (filteredCustomers.isEmpty()) {
+                    showAlert(Alert.AlertType.INFORMATION, "No Data", "No Data to Export",
+                             "There are no customers to export to Excel based on current filter.");
+                    return;
+                }
+
+                Map<String, Integer> result = controller.exportExcel(file, filteredCustomers);
+                showAlert(Alert.AlertType.INFORMATION, "Export Result", "Excel Export Completed",
+                        String.format("Successfully exported: %d records\nFailed to export: %d records",
                                 result.get("success"), result.get("failed")));
             } catch (SQLException e) {
                 showAlert(Alert.AlertType.ERROR, "Database Error", "Failed to export data", e.getMessage());

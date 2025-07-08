@@ -163,7 +163,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.tama.jfxcrud/com.tama.jfxcrud.CrudApp</mainClass>
+                            <mainClass>com.tama.jfxcrud.CrudApp</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
