@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class CrudApp extends Application {
     @Override
@@ -19,7 +20,7 @@ public class CrudApp extends Application {
         controller.setPrimaryStage(stage);
         
         Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/com/tama/jfxcrud/styles.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/tama/jfxcrud/styles.css")).toExternalForm());
         
         stage.setTitle("Customer Management System");
         stage.setScene(scene);
