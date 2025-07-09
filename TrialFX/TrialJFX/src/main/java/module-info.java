@@ -10,4 +10,6 @@ module com.tama.trial {
 
     opens com.tama.trial to javafx.fxml;
     exports com.tama.trial;
+    exports com.tama.trial.controller;
+    opens com.tama.trial.controller to javafx.fxml;
 }
