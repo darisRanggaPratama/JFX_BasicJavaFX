@@ -2,19 +2,36 @@ package com.tama.trial;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
+public class MainApp extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        // Approach 2 (Recommended): Using explicit FXMLLoader instance with null safety
+        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(
+                MainApp.class.getResource("main_layout.fxml"),
+                "FXML resource not found"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
+
 /**
  * Main application class for the JavaFX application.
  * 
  * This class demonstrates two different approaches to loading FXML files:
  * 
- * Approach 1 (Static method):
+ * Approach 1 (Static method): MainApps.java
  * ```
  * Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main_layout.fxml")));
  * stage.setTitle("Test Input");
@@ -22,7 +39,7 @@ import java.util.Objects;
  * stage.show();
  * ```
  * 
- * Approach 2 (Instance method):
+ * Approach 2 (Instance method): MainApp.java
  * ```
  * FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("main_layout.fxml"));
  * Scene scene = new Scene(fxmlLoader.load(), 320, 240);
@@ -57,29 +74,4 @@ import java.util.Objects;
  * 
  * The implementation below uses Approach 2 with added null safety.
  */
-public class MainApp extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        // Approach 2 (Recommended): Using explicit FXMLLoader instance with null safety
-        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(
-            MainApp.class.getResource("main_layout.fxml"),
-            "FXML resource not found"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
 
-        // If you need to access the controller:
-        // MainController controller = fxmlLoader.getController();
-
-        // Approach 1 (Alternative): Using static load method
-        // Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main_layout.fxml")));
-        // stage.setTitle("Test Input");
-        // stage.setScene(new Scene(root, 300, 275));
-        // stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
-    }
-}
