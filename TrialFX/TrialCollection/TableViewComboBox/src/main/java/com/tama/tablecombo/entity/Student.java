@@ -1,4 +1,4 @@
-package com.tama.combotable.entity;
+package com.tama.tablecombo.entity;
 
 public class Student {
     private String id, firstName, lastName;

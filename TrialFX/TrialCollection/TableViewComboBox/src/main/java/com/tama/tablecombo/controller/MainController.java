@@ -1,6 +1,6 @@
-package com.tama.combotable.controller;
+package com.tama.tablecombo.controller;
 
-import com.tama.combotable.entity.Student;
+import com.tama.tablecombo.entity.Student;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

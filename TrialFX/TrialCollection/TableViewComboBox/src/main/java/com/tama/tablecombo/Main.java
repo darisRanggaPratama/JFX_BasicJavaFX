@@ -1,4 +1,4 @@
-package com.tama.combotable;
+package com.tama.tablecombo;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

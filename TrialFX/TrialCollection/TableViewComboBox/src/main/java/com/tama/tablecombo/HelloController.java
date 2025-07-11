@@ -1,4 +1,4 @@
-package com.tama.combotable;
+package com.tama.tablecombo;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

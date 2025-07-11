@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.tama</groupId>
-    <artifactId>combotable</artifactId>
+    <artifactId>tablecombo</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>ComboBoxTableView</name>
+    <name>TableViewComboBox</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -96,7 +96,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.tama.combotable/com.tama.combotable.Main</mainClass>
+                            <mainClass>com.tama.tablecombo/com.tama.tablecombo.HelloApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

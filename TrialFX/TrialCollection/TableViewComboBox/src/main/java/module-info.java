@@ -1,4 +1,4 @@
-module com.tama.combotable {
+module com.tama.tablecombo {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -8,9 +8,9 @@ module com.tama.combotable {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
 
-    exports com.tama.combotable;
-    exports com.tama.combotable.controller;
+    exports com.tama.tablecombo;
+    exports com.tama.tablecombo.controller;
 
-    opens com.tama.combotable to javafx.fxml;
-    opens com.tama.combotable.controller to javafx.fxml;
+    opens com.tama.tablecombo to javafx.fxml;
+    opens com.tama.tablecombo.controller to javafx.fxml;
 }
