@@ -33,6 +33,7 @@ public class ConnectionSetupView {
     private void createUI() {
         VBox mainLayout = new VBox(15);
         mainLayout.setPadding(new Insets(20));
+        mainLayout.setSpacing(10);
         mainLayout.setAlignment(Pos.CENTER);
         
         Label titleLabel = new Label("Database Connection Setup");
