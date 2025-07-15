@@ -12,11 +12,21 @@ import java.util.Objects;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main_view.fxml")));
-        Scene scene = new Scene(root);
-        stage.setTitle("Sharing Data JFX");
-        stage.setScene(scene);
-        stage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("/com/tama/datasharing/main_view.fxml")));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setTitle("Main View JFX");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Error load FXML: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public static void main(String[] args) {
+        launch();
     }
 
 
