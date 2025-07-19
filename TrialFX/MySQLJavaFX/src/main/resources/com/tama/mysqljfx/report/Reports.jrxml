@@ -1,0 +1,88 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Blank_A4" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d4fee4b1-92e5-4753-99c0-b202b4162aec">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="dGVzdGluZy5mYWN1bHR5ICwxNTEsMjgsOTZkZTBjNjctNjlmNy00OGZlLWE0MDUtNzZlNWVjMTgz&#xa;NTQxO3Rlc3RpbmcuZGVwYXJ0bWVudCAsMTUsMTUsMzFiMjdjZWMtMDdkYi00YzE5LTgyZTAtNGM3&#xa;YTM5NjFhYTAwOw=="/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AdapterMySQLjdbc"/>
+	<query language="SQL"><![CDATA[SELECT testing.faculty.name AS Faculty,
+	testing.department.id,
+	testing.department.name AS Department,
+	testing.department.faculty_id
+FROM testing.department
+	INNER JOIN testing.faculty ON 
+	 testing.department.faculty_id = testing.faculty.id]]></query>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="department"/>
+	</field>
+	<field name="Department" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Department"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="department"/>
+	</field>
+	<field name="Faculty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Faculty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faculty"/>
+	</field>
+	<group name="Faculty">
+		<expression><![CDATA[$F{Faculty}]]></expression>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="ad04e748-92db-42da-bcba-ca992231f5f5" x="80" y="23" width="400" height="47" fontName="Arial" fontSize="18.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[UNIVERSAL UNIVERSITY]]></text>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="34" splitType="Stretch">
+		<element kind="staticText" uuid="e034fe62-4269-43f2-8c4c-85f4387efffe" x="0" y="0" width="80" height="30" fontName="Arial" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[id]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="144a83f8-5e28-4678-bf87-b9c8916baf78"/>
+			<box>
+				<pen lineWidth="1.0" lineStyle="Solid"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="d5000b4b-d1f4-4460-84c6-483d4ecf83fb" x="80" y="0" width="200" height="30" fontName="Arial" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Department]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1252372e-1729-4053-ac8d-f654da69e001"/>
+			<box leftPadding="3">
+				<pen lineWidth="1.0" lineStyle="Solid"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="b3517ace-5b1f-4f23-a1ed-3c5f6fb7dc89" x="280" y="0" width="270" height="30" fontName="Arial" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Faculty]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="417fa063-06bf-4c3a-b96a-942e0ec4b091"/>
+			<box leftPadding="3">
+				<pen lineWidth="1.0" lineStyle="Solid"/>
+			</box>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<element kind="textField" uuid="66fcee36-f3e1-4d3e-ac38-3ea976566267" x="0" y="0" width="80" height="20" fontName="Arial" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{id}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="144a83f8-5e28-4678-bf87-b9c8916baf78"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="09273791-c49f-464e-bdc8-e9a92207878b" x="80" y="0" width="200" height="20" fontName="Arial" fontSize="12.0" vTextAlign="Middle">
+				<expression><![CDATA[$F{Department}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1252372e-1729-4053-ac8d-f654da69e001"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="151c1b81-cd68-42cd-a63d-a607b211baa8" x="280" y="0" width="270" height="20" fontName="Arial" fontSize="12.0" vTextAlign="Middle">
+				<expression><![CDATA[$F{Faculty}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="417fa063-06bf-4c3a-b96a-942e0ec4b091"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

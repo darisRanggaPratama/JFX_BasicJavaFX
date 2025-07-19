@@ -51,7 +51,6 @@
                 <Label text="Search:" />
                 <TextField fx:id="searchField" prefWidth="300" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label fx:id="connectionStatusLabel" style="-fx-text-fill: red;" text="Not Connected" />
             </HBox>
         </VBox>
     </top>
@@ -84,6 +83,7 @@
                 <Button fx:id="nextButton" onAction="#handleNextPage" text="Next" />
                 <Label text="Rows per page:" />
                 <ComboBox fx:id="rowsPerPageComboBox" onAction="#handleRowsPerPageChange" />
+                <Label fx:id="connectionStatusLabel" style="-fx-text-fill: red;" text="Not Connected" />
             </HBox>
         </VBox>
     </bottom>
