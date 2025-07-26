@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="CustomerReport" pageWidth="595" pageHeight="842" columnWidth="555"
+    leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQL Connection"/>
+    <property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+
+    <parameter name="SEARCH_TERM" class="java.lang.String">
+        <defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+    </parameter>
+
+    <queryString>
+        <![CDATA[
+        SELECT nik, name, born, active, salary
+        FROM customer
+        WHERE LOWER(nik) LIKE LOWER(CONCAT('%', $P{SEARCH_TERM}, '%'))
+           OR LOWER(name) LIKE LOWER(CONCAT('%', $P{SEARCH_TERM}, '%'))
+           OR CAST(salary AS CHAR) LIKE CONCAT('%', $P{SEARCH_TERM}, '%')
+        ORDER BY name
+        ]]>
+    </queryString>
+
+    <field name="nik" class="java.lang.String"/>
+    <field name="name" class="java.lang.String"/>
+    <field name="born" class="java.sql.Date"/>
+    <field name="active" class="java.lang.Boolean"/>
+    <field name="salary" class="java.lang.Double"/>
+
+    <variable name="totalSalary" class="java.lang.Double" calculation="Sum">
+        <variableExpression><![CDATA[$F{salary}]]></variableExpression>
+    </variable>
+
+    <title>
+        <band height="50">
+            <staticText>
+                <reportElement x="0" y="0" width="555" height="30"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Customer Report]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="0" y="30" width="555" height="20"/>
+                <textElement textAlignment="Center">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Search Term: " + ($P{SEARCH_TERM}.equals("") ? "All" : $P{SEARCH_TERM})]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="20">
+            <staticText>
+                <reportElement x="0" y="0" width="100" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[NIK]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="100" y="0" width="150" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Name]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="250" y="0" width="100" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Born]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="350" y="0" width="70" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Active]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="420" y="0" width="135" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Salary]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="0" y="0" width="100" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{nik}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="100" y="0" width="150" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement x="250" y="0" width="100" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{born}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="350" y="0" width="70" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{active} ? "Yes" : "No"]]></textFieldExpression>
+            </textField>
+            <textField pattern="Rp #,##0.00">
+                <reportElement x="420" y="0" width="135" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <summary>
+        <band height="30">
+            <staticText>
+                <reportElement x="320" y="5" width="100" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Total Salary:]]></text>
+            </staticText>
+            <textField pattern="Rp #,##0.00">
+                <reportElement x="420" y="5" width="135" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{totalSalary}]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement x="320" y="3" width="235" height="1"/>
+            </line>
+        </band>
+    </summary>
+</jasperReport>

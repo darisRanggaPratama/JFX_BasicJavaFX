@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.tama.customer.controller.DatabaseConnectionController">
+    <GridPane vgap="10" hgap="10">
+        <Label text="Server:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="serverField" text="localhost" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Port:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="portField" text="3306" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Database:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="databaseField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Test Connection" onAction="#handleTestConnection"/>
+        <Button text="Connect" onAction="#handleConnect"/>
+    </HBox>
+
+    <Label fx:id="statusLabel" wrapText="true"/>
+</VBox>
