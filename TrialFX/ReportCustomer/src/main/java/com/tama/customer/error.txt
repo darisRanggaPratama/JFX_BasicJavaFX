@@ -1,0 +1,8 @@
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/TrialFX/ReportCustomer/src/main/java/com/tama/customer/MainApplication.java
+java: /Users/rangga/Documents/GitHub/JFX_BasicJavaFX/TrialFX/ReportCustomer/src/main/java/com/tama/customer/MainApplication.java uses unchecked or unsafe operations.
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/TrialFX/ReportCustomer/src/main/java/com/tama/customer/MainApplication.java
+java: Recompile with -Xlint:unchecked for details.
+
+/Users/rangga/Documents/GitHub/JFX_BasicJavaFX/TrialFX/ReportCustomer/src/main/java/com/tama/customer/view/ProgressDialog.java:57:17
+java: close() in com.tama.customer.view.ProgressDialog cannot override close() in javafx.scene.control.Dialog
+  overridden method is final
