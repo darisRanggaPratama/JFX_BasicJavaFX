@@ -19,12 +19,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -36,6 +41,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.BiFunction;
 
 public class MainApplication extends Application {
@@ -46,6 +52,18 @@ public class MainApplication extends Application {
     private Label totalRecordsLabel;
     private TextField searchField;  // Add this field at class level
 
+    private Pagination pagination;
+    private ComboBox<Integer> recordLimitComboBox;
+    private final int[] RECORD_LIMITS = {1, 5, 10, 25, 50, 100};
+    private int currentPage = 0;
+    private ObservableList<Customer> masterData = FXCollections.observableArrayList();
+    private Label pageNumberLabel;
+
+    private Button firstPageButton;
+    private Button prevPageButton;
+    private Button nextPageButton;
+    private Button lastPageButton;
+
     @Override
     public void start(Stage stage) {
         this.primaryStage = stage;
@@ -54,10 +72,14 @@ public class MainApplication extends Application {
         // Create an initial empty scene to ensure proper initialization
         Scene initialScene = new Scene(new javafx.scene.layout.StackPane(), 1, 1);
         stage.setScene(initialScene);
-        stage.hide();
 
         // Show database connection dialog
-        DatabaseConnectionView dbView = new DatabaseConnectionView(primaryStage);
+        DatabaseConnectionView dbView = new DatabaseConnectionView(null); // Set owner to null
+        dbView.setOnShowing(event -> {
+            Stage dbStage = (Stage) dbView.getDialogPane().getScene().getWindow();
+            dbStage.centerOnScreen();
+        });
+
         dbView.showAndWait().ifPresent(success -> {
             if (success) {
                 showMainWindow();
@@ -75,11 +97,12 @@ public class MainApplication extends Application {
         // Create search box and table container
         VBox centerBox = new VBox(10);
         centerBox.setPadding(new Insets(10));
+        VBox.setVgrow(centerBox, Priority.ALWAYS); // Make centerBox fill vertical space
 
         // Add search box
         HBox searchBox = new HBox(10);
         searchBox.getStyleClass().add("search-box");
-        searchField = new TextField();  // Use the class field instead of local variable
+        searchField = new TextField();
         searchField.setPromptText("Search by NIK or Name");
         searchField.setPrefWidth(300);
         Button searchButton = new Button("Search");
@@ -87,8 +110,12 @@ public class MainApplication extends Application {
 
         // Create table
         tableView = createTableView();
+        VBox.setVgrow(tableView, Priority.ALWAYS); // Make tableView fill vertical space
 
-        centerBox.getChildren().addAll(searchBox, tableView);
+        // Create pagination controls
+        HBox paginationControls = createPaginationControls();
+
+        centerBox.getChildren().addAll(searchBox, tableView, paginationControls);
         root.setCenter(centerBox);
 
         // Add search functionality
@@ -173,9 +200,10 @@ public class MainApplication extends Application {
         search.setAccelerator(KeyCombination.keyCombination("Ctrl+F"));
         MenuItem clearSearch = new MenuItem("Clear Search");
         MenuItem showActive = new MenuItem("Show Active Only");
+        MenuItem showInactive = new MenuItem("Show Inactive Only");
         MenuItem showAll = new MenuItem("Show All");
         viewMenu.getItems().addAll(search, clearSearch, new SeparatorMenuItem(),
-                                 showActive, showAll);
+                                 showActive, showInactive, showAll);
 
         // Export/Import Menu
         Menu exportMenu = new Menu("Export");
@@ -209,7 +237,11 @@ public class MainApplication extends Application {
         // Add event handlers
         // Connect handlers
         openConnection.setOnAction(e -> {
-            DatabaseConnectionView connectionView = new DatabaseConnectionView(primaryStage);
+            DatabaseConnectionView connectionView = new DatabaseConnectionView(null);
+            connectionView.setOnShowing(event -> {
+                Stage stage = (Stage) connectionView.getDialogPane().getScene().getWindow();
+                stage.centerOnScreen();
+            });
             connectionView.showAndWait().ifPresent(success -> {
                 if (success) {
                     refreshData();
@@ -259,6 +291,7 @@ public class MainApplication extends Application {
             refreshData();
         });
         showActive.setOnAction(e -> filterActiveCustomers());
+        showInactive.setOnAction(e -> filterInactiveCustomers());
         showAll.setOnAction(e -> refreshData());
 
         // Export handlers
@@ -388,11 +421,150 @@ public class MainApplication extends Application {
         return statusBar;
     }
 
+    private ImageView createPaginationIcon(String iconName) {
+        String resourcePath = "/com/tama/customer/icons/" + iconName + ".png";
+        try {
+            var resourceStream = getClass().getResourceAsStream(resourcePath);
+            if (resourceStream == null) {
+                System.err.println("Resource not found: " + resourcePath);
+                return null;
+            }
+            Image image = new Image(resourceStream);
+            if (image.isError()) {
+                System.err.println("Error loading icon: " + iconName + ", path: " + resourcePath + ", error: " + image.getException());
+                return null;
+            }
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(24);
+            imageView.setFitHeight(24);
+            return imageView;
+        } catch (Exception e) {
+            System.err.println("Exception loading icon: " + iconName + ", path: " + resourcePath + ", error: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private HBox createPaginationControls() {
+        HBox controls = new HBox(10);
+        controls.setAlignment(Pos.CENTER);
+        controls.getStyleClass().add("pagination-controls");
+
+        // Create pagination buttons with icons
+        firstPageButton = new Button();
+        firstPageButton.getStyleClass().add("pagination-button");
+        firstPageButton.setGraphic(createPaginationIcon("first"));
+        firstPageButton.setTooltip(new Tooltip("First Page"));
+
+        prevPageButton = new Button();
+        prevPageButton.getStyleClass().add("pagination-button");
+        prevPageButton.setGraphic(createPaginationIcon("previous"));
+        prevPageButton.setTooltip(new Tooltip("Previous Page"));
+
+        pageNumberLabel = new Label("Page 1");
+        pageNumberLabel.getStyleClass().add("page-number-label");
+
+        nextPageButton = new Button();
+        nextPageButton.getStyleClass().add("pagination-button");
+        nextPageButton.setGraphic(createPaginationIcon("next"));
+        nextPageButton.setTooltip(new Tooltip("Next Page"));
+
+        lastPageButton = new Button();
+        lastPageButton.getStyleClass().add("pagination-button");
+        lastPageButton.setGraphic(createPaginationIcon("last"));
+        lastPageButton.setTooltip(new Tooltip("Last Page"));
+
+        // Create records per page combo box
+        recordLimitComboBox = new ComboBox<>();
+        recordLimitComboBox.getItems().addAll(1, 5, 10, 25, 50, 100);
+        recordLimitComboBox.setValue(10); // Default value
+        recordLimitComboBox.setPromptText("Records per page");
+
+        Label recordsPerPageLabel = new Label("Records per page:");
+
+        // Add event handlers
+        firstPageButton.setOnAction(e -> goToFirstPage());
+        prevPageButton.setOnAction(e -> goToPreviousPage());
+        nextPageButton.setOnAction(e -> goToNextPage());
+        lastPageButton.setOnAction(e -> goToLastPage());
+        recordLimitComboBox.setOnAction(e -> updatePagination());
+
+        controls.getChildren().addAll(
+            firstPageButton, prevPageButton,
+            pageNumberLabel,
+            nextPageButton, lastPageButton,
+            new Separator(Orientation.VERTICAL),
+            recordsPerPageLabel, recordLimitComboBox
+        );
+
+        return controls;
+    }
+
+    private void goToFirstPage() {
+        if (currentPage > 0) {
+            currentPage = 0;
+            updateTableView();
+        }
+    }
+
+    private void goToPreviousPage() {
+        if (currentPage > 0) {
+            currentPage--;
+            updateTableView();
+        }
+    }
+
+    private void goToNextPage() {
+        int maxPage = (int) Math.ceil((double) masterData.size() / recordLimitComboBox.getValue()) - 1;
+        if (currentPage < maxPage) {
+            currentPage++;
+            updateTableView();
+        }
+    }
+
+    private void goToLastPage() {
+        int maxPage = (int) Math.ceil((double) masterData.size() / recordLimitComboBox.getValue()) - 1;
+        if (currentPage < maxPage) {
+            currentPage = maxPage;
+            updateTableView();
+        }
+    }
+
+    private void updatePagination() {
+        currentPage = 0; // Reset to first page when changing records per page
+        updateTableView();
+    }
+
+    private void updateTableView() {
+        int fromIndex = currentPage * recordLimitComboBox.getValue();
+        int toIndex = Math.min(fromIndex + recordLimitComboBox.getValue(), masterData.size());
+
+        ObservableList<Customer> pageData = FXCollections.observableArrayList(
+            masterData.subList(fromIndex, toIndex)
+        );
+        tableView.setItems(pageData);
+
+        // Update page number label
+        int totalPages = (int) Math.ceil((double) masterData.size() / recordLimitComboBox.getValue());
+        pageNumberLabel.setText(String.format("Page %d of %d", currentPage + 1, totalPages));
+
+        // Update navigation buttons state
+        updateNavigationButtons(totalPages);
+
+        updateStatus();
+    }
+
+    private void updateNavigationButtons(int totalPages) {
+        firstPageButton.setDisable(currentPage == 0);
+        prevPageButton.setDisable(currentPage == 0);
+        nextPageButton.setDisable(currentPage >= totalPages - 1);
+        lastPageButton.setDisable(currentPage >= totalPages - 1);
+    }
+
     private void refreshData() {
         try {
-            ObservableList<Customer> customers = customerService.getAllCustomers();
-            tableView.setItems(customers);
-            updateStatus();
+            masterData = customerService.getAllCustomers();
+            updatePagination();
         } catch (SQLException e) {
             showError("Error loading data", e.getMessage());
         }
@@ -636,11 +808,22 @@ public class MainApplication extends Application {
     private void filterActiveCustomers() {
         try {
             ObservableList<Customer> customers = customerService.getAllCustomers();
-            ObservableList<Customer> activeCustomers = FXCollections.observableArrayList(
+            masterData = FXCollections.observableArrayList(
                 customers.filtered(Customer::isActive)
             );
-            tableView.setItems(activeCustomers);
-            updateStatus();
+            updatePagination();
+        } catch (SQLException e) {
+            showError("Error loading data", e.getMessage());
+        }
+    }
+
+    private void filterInactiveCustomers() {
+        try {
+            ObservableList<Customer> customers = customerService.getAllCustomers();
+            masterData = FXCollections.observableArrayList(
+                customers.filtered(customer -> !customer.isActive())
+            );
+            updatePagination();
         } catch (SQLException e) {
             showError("Error loading data", e.getMessage());
         }

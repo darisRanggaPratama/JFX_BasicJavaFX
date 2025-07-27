@@ -21,18 +21,31 @@ public class DatabaseConnectionView extends Dialog<Boolean> {
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
-        grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setPadding(new Insets(20));
 
-        grid.add(new Label("Server:"), 0, 0);
-        grid.add(serverField, 1, 0);
-        grid.add(new Label("Database:"), 0, 1);
-        grid.add(databaseField, 1, 1);
-        grid.add(new Label("Port:"), 0, 2);
-        grid.add(portField, 1, 2);
-        grid.add(new Label("Username:"), 0, 3);
-        grid.add(userField, 1, 3);
-        grid.add(new Label("Password:"), 0, 4);
-        grid.add(passwordField, 1, 4);
+        // Set minimum widths for consistent layout
+        serverField.setMinWidth(200);
+        databaseField.setMinWidth(200);
+        portField.setMinWidth(200);
+        userField.setMinWidth(200);
+        passwordField.setMinWidth(200);
+
+        // Add form fields
+        int row = 0;
+        grid.add(new Label("Server:"), 0, row);
+        grid.add(serverField, 1, row++);
+
+        grid.add(new Label("Database:"), 0, row);
+        grid.add(databaseField, 1, row++);
+
+        grid.add(new Label("Port:"), 0, row);
+        grid.add(portField, 1, row++);
+
+        grid.add(new Label("Username:"), 0, row);
+        grid.add(userField, 1, row++);
+
+        grid.add(new Label("Password:"), 0, row);
+        grid.add(passwordField, 1, row);
 
         getDialogPane().setContent(grid);
 
@@ -71,9 +84,18 @@ public class DatabaseConnectionView extends Dialog<Boolean> {
         databaseField.textProperty().addListener((obs, oldVal, newVal) ->
             connectButton.setDisable(newVal.trim().isEmpty()));
 
-        // Optional: set owner after dialog is fully configured
+        // Set owner and center the dialog
         if (owner != null) {
             initOwner(owner);
+            // Center on screen
+            setX(owner.getX() + (owner.getWidth() - getWidth()) / 2);
+            setY(owner.getY() + (owner.getHeight() - getHeight()) / 2);
+        } else {
+            // If no owner, center on screen
+            setOnShowing(event -> {
+                Stage stage = (Stage) getDialogPane().getScene().getWindow();
+                stage.centerOnScreen();
+            });
         }
     }
 }

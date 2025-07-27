@@ -100,11 +100,11 @@
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #bbdefb;
+    -fx-background-color: #008bf9;
 }
 
 .table-row-cell:hover {
-    -fx-background-color: #e3f2fd;
+    -fx-background-color: #35aaff;
 }
 
 /* Status bar styling */
@@ -225,4 +225,44 @@
     -fx-text-fill: white;
     -fx-font-size: 12px;
     -fx-padding: 5px 10px;
+}
+
+/* Pagination button styling */
+.button.pagination-button {
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-max-width: 32px;
+    -fx-max-height: 32px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 4px;
+    -fx-padding: 4px;
+}
+
+.button.pagination-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.button.pagination-button:pressed {
+    -fx-background-color: #e0e0e0;
+}
+
+.button.pagination-button:disabled {
+    -fx-opacity: 0.5;
+}
+
+/* Pagination controls container */
+.pagination-controls {
+    -fx-padding: 10px;
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px 0 0 0;
+}
+
+/* Current page label */
+.page-number-label {
+    -fx-font-weight: bold;
+    -fx-padding: 0 10px;
+    -fx-min-width: 100px;
+    -fx-alignment: center;
 }
