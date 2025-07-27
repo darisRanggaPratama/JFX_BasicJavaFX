@@ -1,0 +1,81 @@
+Saya ingin Anda bantu saya membuat aplikasi desktop modern berbasis JavaFX 21 (GUI) dengan spesifikasi dan alur berikut ini:
+
+Teknologi yang Digunakan: Java 17, JavaFX 17, MySQL 8, Maven 3.9, Apache POI 5.4 (import/export Excel), MySQL Connector/J 9.3 (JDBC), Jasper Reports 6 (untuk PDF dan laporan), Modular Java (module-info.java).
+
+Arsitektur:
+1. Gunakan pola MVC (Model-View-Controller).
+2. Gunakan DAO Pattern untuk pemisahan logika SQL.
+3. Gunakan Singleton untuk manajemen koneksi database (DBConnectionManager).
+
+Alur Aplikasi:
+1. Saat aplikasi dijalankan, tampilkan form koneksi database, berisi input: server, database, port, user, password.
+2. Jika koneksi berhasil, tampilkan form utama CRUD untuk mengelola data.
+
+Struktur Menu CRUD:
+1. Menu Connect
+a. Open Connection
+b. Close Connection
+
+2. Menu Data
+a. Add Data
+b. Refresh Table
+c. Print Preview PDF (berdasarkan hasil search). Buatkan file jasper report: jrxml. Lalu jrxml dikompilasi.
+d. Export to PDF (berdasarkan hasil search). Buatkan file jasper report: jrxml. Lalu dikompilasi.
+
+3. Menu Upload. Tampilkan keterangan kolom yang dibutuhkan.
+a. Upload CSV
+b. Upload Excel (.xlsx, via Apache POI)
+
+4. Menu Download
+a. Download CSV. Download record sesuai hasil search.
+b. Download Excel (.xlsx, via Apache POI). Download record sesuai hasil search.
+
+Table Data (TableView):
+1. Gunakan ObservableList agar data binding & refresh otomatis
+2. Bisa edit dan delete data via double-click row (form edit muncul)
+3. Kolom searchable: NIK, Name, Born, Active, Salary
+4. Fitur Search dengan hasil:
+4.1. Jumlah record ditemukan
+4.2. Total akumulasi salary dari hasil pencarian
+5. Tampilkan pagination: First, Previous, Next, Last. Tombol berbentuk icon.
+6. ComboBox untuk atur jumlah record yang ditampilkan.
+
+Validasi Form:
+1. NIK harus unik.
+2. Salary harus lebih dari 0.
+3. Born harus tanggal yang valid.
+4. Gunakan JavaFX Alert Dialog untuk notifikasi error atau konfirmasi.
+5. Tampilkan dialog konfirmasi sebelum delete.
+6. Gunakan JavaFX Alert Dialog untuk menginformasikan jumlah record yang gagal upload dan penyebabnya. Serta jumlah record yang berhasil upload dan download.
+
+Fitur Tambahan:
+1. Proses Export (PDF, Excel, CSV) berjalan di background thread (Task<Void>) agar UI tidak freeze.
+2. Tampilkan status bar di form utama: Status koneksi DB dan total jumlah data di DB.
+3. Gunakan form Add Data yang reuse untuk Edit (ubah judul dan isi field).
+
+Form yang Dibutuhkan:
+1. Form Database Connection.
+2. Form Utama (CRUD).
+3. Form Edit/Delete Record.
+
+Struktur Tabel:
+Server: localhost, Port: 3306, Database: test.
+
+Tabel customer:
+
+CREATE TABLE `customer` (
+  `idx` int NOT NULL AUTO_INCREMENT,
+  `nik` varchar(6) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `born` date DEFAULT NULL,
+  `active` tinyint DEFAULT NULL,
+  `salary` int DEFAULT NULL,
+  PRIMARY KEY (`idx`)
+);
+
+Harapan:
+1. Buat struktur awal proyek Maven.
+2. Buat kerangka kode dasar (koneksi, CRUD, export).
+3. Gunakan pendekatan clean code, modular, scalable.
+4. Bantu saya buat bagian-bagian penting terlebih dahulu.
+5. Saya ingin aplikasi ini tampil modern dan elegan, gunakan CSS custom JavaFX.

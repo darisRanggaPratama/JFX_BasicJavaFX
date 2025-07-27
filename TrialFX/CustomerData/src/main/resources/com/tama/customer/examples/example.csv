@@ -1,0 +1,5 @@
+NIK;Name;Born;Active;Salary
+12345;John Doe;2000-01-01;true;5000000.00
+67890;Jane Smith;1995-05-15;true;6000000.00
+11111;Bob Wilson;1988-12-25;false;4500000.00
+

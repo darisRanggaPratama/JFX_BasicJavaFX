@@ -3,6 +3,6 @@
   <component name="SonarLintProjectSettings">
     <option name="bindingEnabled" value="true" />
     <option name="projectKey" value="tama" />
-    <option name="serverId" value="tama" />
+    <option name="serverId" value="SonarQube" />
   </component>
 </project>

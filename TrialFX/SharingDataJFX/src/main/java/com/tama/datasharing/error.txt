@@ -1,0 +1,39 @@
+"C:\Program Files\Zulu\zulu-21\bin\java.exe" -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:54940,suspend=y,server=n -javaagent:C:\Users\Pongo\AppData\Local\JetBrains\IntelliJIdea2025.1\captureAgent\debugger-agent.jar=file:///C:/Users/Pongo/AppData/Local/Temp/capture13030065495607282147.props -agentpath:C:\Users\Pongo\AppData\Local\Temp\idea_libasyncProfiler_dll_temp_folder12597\libasyncProfiler.dll=version,jfr,event=wall,interval=10ms,cstack=no,file=C:\Users\Pongo\IdeaSnapshots\App_2025_07_15_105346.jfr,dbghelppath=C:\Users\Pongo\AppData\Local\Temp\idea_dbghelp_dll_temp_folder\dbghelp.dll,log=C:\Users\Pongo\AppData\Local\Temp\App_2025_07_15_105346.jfr.log.txt,logLevel=DEBUG -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false -Ddebugger.agent.enable.coroutines=true -Dkotlinx.coroutines.debug.enable.flows.stack.trace=true -Dkotlinx.coroutines.debug.enable.mutable.state.flows.stack.trace=true -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath "D:\up2github\JFX_BasicJavaFX\TrialFX\SharingDataJFX\target\classes;C:\Users\Pongo\.m2\repository\org\controlsfx\controlsfx\11.2.1\controlsfx-11.2.1.jar;C:\Users\Pongo\.m2\repository\com\dlsc\formsfx\formsfx-core\11.6.0\formsfx-core-11.6.0.jar;C:\Users\Pongo\.m2\repository\net\synedra\validatorfx\0.5.0\validatorfx-0.5.0.jar;C:\Users\Pongo\.m2\repository\org\kordamp\ikonli\ikonli-javafx\12.3.1\ikonli-javafx-12.3.1.jar;C:\Users\Pongo\.m2\repository\org\kordamp\ikonli\ikonli-core\12.3.1\ikonli-core-12.3.1.jar;C:\Users\Pongo\.m2\repository\org\kordamp\bootstrapfx\bootstrapfx-core\0.4.0\bootstrapfx-core-0.4.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2025.1.1.1\lib\idea_rt.jar" com.tama.datasharing.App
+Connected to the target VM, address: '127.0.0.1:54940', transport: 'socket'
+Exception in Application start method
+java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:464)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1149)
+Caused by: java.lang.RuntimeException: Exception in Application start method
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:893)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:233)
+	at com.tama.datasharing.App.start(App.java:16)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:839)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:483)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run$$$capture(InvokeLaterDispatcher.java:95)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java)
+	at --- Async.Stack.Trace --- (captured by IntelliJ IDEA debugger)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher.invokeLater(InvokeLaterDispatcher.java)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._invokeLater(WinApplication.java:337)
+	at javafx.graphics/com.sun.glass.ui.Application.invokeLater(Application.java:483)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.defer(QuantumToolkit.java:832)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.runLater(PlatformImpl.java:452)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.runAndWait(PlatformImpl.java:481)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.runAndWait(PlatformImpl.java:468)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:832)
+	... 2 more
+Exception running application com.tama.datasharing.App
+Disconnected from the target VM, address: '127.0.0.1:54940', transport: 'socket'
+
+Process finished with exit code 1

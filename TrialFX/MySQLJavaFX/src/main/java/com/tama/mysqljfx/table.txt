@@ -1,0 +1,25 @@
+-- Tabel faculty
+CREATE TABLE faculty (
+    id INT PRIMARY KEY,
+    name VARCHAR(45) NOT NULL,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CHECK (CHAR_LENGTH(name) > 0)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
+
+-- Tabel department
+CREATE TABLE department (
+    id INT PRIMARY KEY,
+    name VARCHAR(45) NOT NULL,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    faculty_id INT DEFAULT NULL COMMENT 'Relasi ke tabel faculty',
+    CONSTRAINT fk_faculty
+        FOREIGN KEY (faculty_id) REFERENCES faculty(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE,
+    CHECK (CHAR_LENGTH(name) > 0),
+    INDEX idx_faculty_id (faculty_id)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;

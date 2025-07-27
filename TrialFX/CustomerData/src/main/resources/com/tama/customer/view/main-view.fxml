@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.tama.customer.controller.MainController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <MenuBar>
+        <Menu text="Connect">
+            <MenuItem text="Open Connection" onAction="#handleOpenConnection"/>
+            <MenuItem text="Close Connection" onAction="#handleCloseConnection"/>
+        </Menu>
+        <Menu text="Data">
+            <MenuItem text="Add Data" onAction="#handleAddData"/>
+            <MenuItem text="Refresh Table" onAction="#handleRefreshTable"/>
+            <MenuItem text="Print Preview PDF" onAction="#handlePrintPreview"/>
+            <MenuItem text="Export to PDF" onAction="#handleExportPDF"/>
+        </Menu>
+        <Menu text="Upload">
+            <MenuItem text="Upload CSV" onAction="#handleUploadCSV"/>
+            <MenuItem text="Upload Excel" onAction="#handleUploadExcel"/>
+        </Menu>
+        <Menu text="Download">
+            <MenuItem text="Download CSV" onAction="#handleDownloadCSV"/>
+            <MenuItem text="Download Excel" onAction="#handleDownloadExcel"/>
+        </Menu>
+    </MenuBar>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Search:"/>
+        <TextField fx:id="searchField" HBox.hgrow="ALWAYS" onKeyReleased="#handleSearch"/>
+        <Label text="Records per page:"/>
+        <ComboBox fx:id="recordsPerPageComboBox" onAction="#handleRecordsPerPageChange"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Results:"/>
+        <Label fx:id="resultCountLabel"/>
+        <Label text="Total Salary:"/>
+        <Label fx:id="totalSalaryLabel"/>
+    </HBox>
+
+    <TableView fx:id="customerTable" VBox.vgrow="ALWAYS" onMouseClicked="#handleTableClick">
+        <columns>
+            <TableColumn fx:id="nikColumn" text="NIK"/>
+            <TableColumn fx:id="nameColumn" text="Name"/>
+            <TableColumn fx:id="bornColumn" text="Born"/>
+            <TableColumn fx:id="activeColumn" text="Active"/>
+            <TableColumn fx:id="salaryColumn" text="Salary"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="firstButton" text="⏮" onAction="#handleFirst"/>
+        <Button fx:id="previousButton" text="◀" onAction="#handlePrevious"/>
+        <Label fx:id="pageInfoLabel" text="Page 1 of 1"/>
+        <Button fx:id="nextButton" text="▶" onAction="#handleNext"/>
+        <Button fx:id="lastButton" text="⏭" onAction="#handleLast"/>
+    </HBox>
+</VBox>
